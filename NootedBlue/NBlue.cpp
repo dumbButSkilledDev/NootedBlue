@@ -6,6 +6,14 @@
 #include <Headers/kern_devinfo.hpp>
 #include <Headers/kern_util.hpp>
 
+SelectiveInjectionTable tbl[] = {
+	{0x22B0, "Broadwell.xml"},
+	{0x22B1, "Broadwell.xml"},
+	{0x22B2, "Broadwell.xml"},
+	{0x22B3, "Broadwell.xml"},
+	{0xFFFF, nullptr},
+};
+
 NBlue *NBlue::callback = nullptr;
 
 void NBlue::init() {
