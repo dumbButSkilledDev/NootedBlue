@@ -14,13 +14,7 @@ struct SelectiveInjectionTable {
 
 //! # TODO: Fill in Fimrware sections with IOKit Personality entries
 
-SelectiveInjectionTable tbl[] = {
-	{0x22B0, "Broadwell.xml"},
-	{0x22B1, "Broadwell.xml"},
-	{0x22B2, "Broadwell.xml"},
-	{0x22B3, "Broadwell.xml"},
-	{0xFFFF, nullptr},
-};
+extern SelectiveInjectionTable tbl[];
 
 class NBlue {
     public:
