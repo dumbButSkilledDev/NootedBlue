@@ -64,3 +64,6 @@ bool ICL::processKext(KernelPatcher &patcher, size_t index, mach_vm_address_t ad
 	}
 	return false;
 }
+
+/* There's some lost version of this where it fixes a display pipe register write as the bit shifts were off */
+/* If I find it I'll upload it here. */
