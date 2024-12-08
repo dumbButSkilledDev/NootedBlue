@@ -11,6 +11,12 @@ SelectiveInjectionTable tbl[] = {
 	{0x22B1, "Broadwell.xml"},
 	{0x22B2, "Broadwell.xml"},
 	{0x22B3, "Broadwell.xml"},
+	{0x9A40, "TigerLake.xml"},
+	{0x9A49, "TigerLake.xml"},
+	{0x9A60, "TigerLake.xml"},
+	{0x9A68, "TigerLake.xml"},
+	{0x9A70, "TigerLake.xml"},
+	{0x9A78, "TigerLake.xml"},
 	{0xFFFF, nullptr},
 };
 
@@ -83,4 +89,12 @@ void NBlue::processPatcher(KernelPatcher &patcher) {
 
 bool NBlue::processKext(KernelPatcher &patcher, size_t index, mach_vm_address_t address, size_t size) {
     return true;
+}
+
+void NBlue::setRMMIOIfNecessary() {
+	if (UNLIKELY(!this->rmmio || !this->rmmio->getLength())) {
+		this->rmmio = this->iGPU->mapDeviceMemoryWithRegister(kIOPCIConfigBaseAddress0); //! i915 maps BAR 0 for MMIO on Gen 4 & newer
+		PANIC_COND(!this->rmmio || !this->rmmio->getLength(), "LRed", "Failed to map RMMIO");
+		this->rmmioPtr = reinterpret_cast<volatile UInt32 *>(this->rmmio->getVirtualAddress());
+	}
 }

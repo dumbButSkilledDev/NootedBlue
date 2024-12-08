@@ -7,5 +7,5 @@
 class MEIFixer : public IOService {
 	OSDeclareDefaultStructors(MEIFixer);
 	
-	virtual bool start(IOService *provider);
+	virtual bool start(IOService *provider) APPLE_KEXT_OVERRIDE;
 };

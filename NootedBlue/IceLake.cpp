@@ -2,6 +2,7 @@
 //!  details.
 
 #include "IceLake.hpp"
+#include "Registers.hpp"
 #include <Headers/kern_api.hpp>
 
 static const char *pathIceLakeFB = "/System/Library/Extensions/AppleIntelICLLPGraphicsFramebuffer.kext/Contents/MacOS/"
@@ -65,5 +66,44 @@ bool ICL::processKext(KernelPatcher &patcher, size_t index, mach_vm_address_t ad
 	return false;
 }
 
-/* There's some lost version of this where it fixes a display pipe register write as the bit shifts were off */
-/* If I find it I'll upload it here. */
+//! https://elixir.bootlin.com/linux/latest/source/drivers/gpu/drm/i915/display/intel_cdclk.c#L1423
+UInt32 ICL::wrapGetCDClockVoltageLevel(void *) {
+	if (callback->activeGeneration >= ICLReliantGenerations::TigerLake) {
+		if (callback->cdclock > 556800) {
+			return 3;
+		} else if (callback->cdclock > 326400) {
+			return 2;
+		} else if (callback->cdclock > 312000) {
+			return 1;
+		} else {
+			return 0;
+		}
+	} else if (callback->activeGeneration == ICLReliantGenerations::ElkhartLake || callback->activeGeneration == ICLReliantGenerations::JasperLake) {
+		if (callback->cdclock > 326400) {
+			return 3;
+		} else if (callback->cdclock > 312000) {
+			return 2;
+		} else if (callback->cdclock > 180000) {
+			return 1;
+		} else {
+			return 0;
+		}
+	} else {
+		if (callback->cdclock > 556800) {
+			return 2;
+		} else if (callback->cdclock > 312000) {
+			return 1;
+		} else {
+			return 0;
+		}
+	}
+	return 0;
+}
+
+void ICL::tigerLakeRegisterFixups(void *that, UInt32 addr, UInt32 val) {
+	if (addr == TRANS_CLK_SEL_A || addr == TRANS_CLK_SEL_B) {
+		//! TLDR; Intel right shifts by 0x28 on Tiger Lake rather than 0x29.
+		//! Fixes that here
+		val = (val << 1);
+	}
+}

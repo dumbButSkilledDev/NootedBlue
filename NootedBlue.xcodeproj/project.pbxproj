@@ -64,6 +64,8 @@
 		F0A0A5B82AC65E4E00AF57AD /* IceLake.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IceLake.hpp; sourceTree = "<group>"; };
 		F0A0A5BB2AC65EE400AF57AD /* FramebufferPatcher.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FramebufferPatcher.cpp; sourceTree = "<group>"; };
 		F0A0A5BC2AC65EE400AF57AD /* FramebufferPatcher.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = FramebufferPatcher.hpp; sourceTree = "<group>"; };
+		F0B867AA2B3E4B6700D472A9 /* Registers.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Registers.hpp; sourceTree = "<group>"; };
+		F0B867AC2B3E5FE000D472A9 /* TigerLake.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TigerLake.xml; sourceTree = "<group>"; };
 		F0BB9E532A57A0340081F5FA /* PatcherPlus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PatcherPlus.cpp; sourceTree = "<group>"; };
 		F0BB9E542A57A0340081F5FA /* PatcherPlus.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PatcherPlus.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -102,6 +104,7 @@
 		1C748C291C21952C0024EED2 /* NootedBlue */ = {
 			isa = PBXGroup;
 			children = (
+				F0B867AB2B3E5FA200D472A9 /* Firmware */,
 				F0962EA22ADF24AB002E1CC9 /* Broadwell.cpp */,
 				F0962EA32ADF24AB002E1CC9 /* Broadwell.hpp */,
 				1C748C2E1C21952C0024EED2 /* Info.plist */,
@@ -116,6 +119,7 @@
 				F0A0A5BC2AC65EE400AF57AD /* FramebufferPatcher.hpp */,
 				F085B62C2B3AA040007331D9 /* MEIFixer.cpp */,
 				F085B62D2B3AA040007331D9 /* MEIFixer.hpp */,
+				F0B867AA2B3E4B6700D472A9 /* Registers.hpp */,
 			);
 			path = NootedBlue;
 			sourceTree = "<group>";
@@ -164,6 +168,14 @@
 				CE8DA0822517C41A008C44E8 /* libkmod.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F0B867AB2B3E5FA200D472A9 /* Firmware */ = {
+			isa = PBXGroup;
+			children = (
+				F0B867AC2B3E5FE000D472A9 /* TigerLake.xml */,
+			);
+			path = Firmware;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

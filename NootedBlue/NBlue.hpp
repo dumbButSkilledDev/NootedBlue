@@ -22,7 +22,12 @@ class NBlue {
     void init();
     void processPatcher(KernelPatcher &patcher);
     bool processKext(KernelPatcher &patcher, size_t index, mach_vm_address_t address, size_t size);
-
+	
+	void setRMMIOIfNecessary();
+	
 	UInt32 deviceId;
     IOPCIDevice *iGPU {nullptr};
+	
+	volatile UInt32 *rmmioPtr;
+	IOMemoryMap *rmmio;
 };
