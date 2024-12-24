@@ -5,5 +5,3 @@ The Source Code of this Original Work is licensed under the `Thou Shalt Not Prof
 
 # wait, i thought this project was dead?
 Officaly yes, Unoficialy no, This fork is meant to revive nootedBlue and get everything working (for the most part)<br>
-
-# Check out the wiki for important information 
