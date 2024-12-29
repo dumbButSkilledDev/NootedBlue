@@ -6,5 +6,8 @@ The Source Code of this Original Work is licensed under the `Thou Shalt Not Prof
 # wait, i thought this project was dead?
 It is. This fork is meant to mess with the code to make it work with some of my stuff, tbh.
 
+# AM I REVIVING IT ?????
+no
+
 # dose it work?
 Somebody reported it working for them, 
